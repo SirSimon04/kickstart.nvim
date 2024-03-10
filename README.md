@@ -52,7 +52,7 @@ Clone kickstart.nvim:
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/SirSimon04/kickstart.nvim "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
