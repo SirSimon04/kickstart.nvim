@@ -128,8 +128,6 @@ return { -- LSP Configuration & Plugins
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
-    require('lspconfig').cds_lsp.setup {}
-
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --
@@ -152,7 +150,6 @@ return { -- LSP Configuration & Plugins
       -- But for many setups, the LSP (`tsserver`) will work just fine
       -- tsserver = {},
       --
-
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -209,5 +206,6 @@ return { -- LSP Configuration & Plugins
         end,
       },
     }
+    require('lspconfig').cds_lsp.setup {}
   end,
 }
