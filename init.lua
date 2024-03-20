@@ -643,6 +643,7 @@ require('lazy').setup({
         auto_install = true,
         highlight = { enable = true },
         indent = { enable = true },
+        playground = { enable = true },
       }
 
       -- There are additional nvim-treesitter modules that you can use to interact
@@ -653,6 +654,7 @@ require('lazy').setup({
       --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
     end,
   },
+  'nvim-treesitter/playground',
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -675,6 +677,8 @@ require('lazy').setup({
   { import = 'custom.plugins' },
 
   'nvim-tree/nvim-web-devicons',
+
+  'nvim-neotest/nvim-nio',
 }, {
   ui = {
     -- If you have a Nerd Font, set icons to an empty table which will use the
@@ -696,6 +700,23 @@ require('lazy').setup({
     },
   },
 })
+
+-- Install tree-sitter-cds
+local parser_config = require('nvim-treesitter.parsers').get_parser_configs()
+parser_config.cds = {
+  install_info = {
+    -- local path or git repo
+    -- url = '/path/to/tree-sitter-cds',
+    url = 'https://github.com/cap-js-community/tree-sitter-cds.git',
+    files = { 'src/parser.c', 'src/scanner.c' },
+    branch = 'main',
+    generate_requires_npm = false,
+    requires_generate_from_grammar = false,
+  },
+  filetype = 'cds',
+  -- additional filetypes that use this parser
+  used_by = { 'cdl', 'hdbcds' },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
