@@ -5,7 +5,15 @@ return {
     require('lualine').setup {
       options = {
         theme = 'catppuccin',
-        -- ... the rest of your lualine config
+      },
+      sections = {
+        lualine_c = {
+          {
+            'filename',
+            file_status = true,
+            path = 1,
+          },
+        },
       },
     }
   end,
