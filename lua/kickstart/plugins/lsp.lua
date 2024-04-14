@@ -148,8 +148,10 @@ return { -- LSP Configuration & Plugins
       --    https://github.com/pmizio/typescript-tools.nvim
       --
       -- But for many setups, the LSP (`tsserver`) will work just fine
-      -- tsserver = {},
+      tsserver = {},
       --
+      eslint = {},
+      prettier = {},
       lua_ls = {
         -- cmd = {...},
         -- filetypes { ...},
@@ -172,7 +174,7 @@ return { -- LSP Configuration & Plugins
               callSnippet = 'Replace',
             },
             -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
+            diagnostics = { disable = { 'missing-fields' } },
           },
         },
       },
@@ -208,5 +210,12 @@ return { -- LSP Configuration & Plugins
       },
     }
     require('lspconfig').cds_lsp.setup {}
+
+    -- Never request typescript-language-server for formatting
+    vim.lsp.buf.format {
+      filter = function(client)
+        return client.name ~= 'tsserver'
+      end,
+    }
   end,
 }
