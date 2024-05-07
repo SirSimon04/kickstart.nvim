@@ -212,10 +212,10 @@ return { -- LSP Configuration & Plugins
     require('lspconfig').cds_lsp.setup {}
 
     -- Never request typescript-language-server for formatting
-    vim.lsp.buf.format {
-      filter = function(client)
-        return client.name ~= 'tsserver'
-      end,
-    }
+    -- vim.lsp.buf.format {
+    --   filter = function(client)
+    --     return client.name ~= 'tsserver'
+    --   end,
+    -- }
   end,
 }
